@@ -1,75 +1,18 @@
-# React + TypeScript + Vite
+# Pokedex.intro
+- Installer les dépendances : npm install
+- Lancer le serveur de développement : npm run dev
+- Vérifier le code avec Biome : npm run check / npm run check:fix
+# Étapes du projet
+- création du projet avec Vite (React/TypeScript/Biome) 
+- création du dépôt et envoi de la branche main.
+- création de PokemonCard, qui affiche une image et un nom dans une balise figure.
+- utilisation d'un ternaire pour afficher « ??? » quand un Pokémon (Mew) n'a pas d'image.
+- Pokémon est défini dans App et passé à PokemonCard via une prop pokemon.
+- les props sont typées avec un type PokemonCardProps 
+- ajout de useState pour mémoriser le nom du Pokémon affiché, avec deux boutons (bulbasaur/mew) 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chaque étape a été développée sur sa propre branche Git (component-1, components-2, props.1, props.2).
 
-Currently, two official plugins are available:
+# Difficultés rencontrées
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+ la mise à jour du state est asynchrone. Juste après avoir appelé la fonction de mise à jour, la valeur lue était encore l'ancienne, ce qui donnait un affichage qui n'était pas à jour.
